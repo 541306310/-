@@ -1,0 +1,48 @@
+#include <iostream>
+
+using namespace std;
+class Stu
+{
+public: 
+	friend Stu operator+ (Stu &a,Stu &b);
+	Stu (int a=0,int b=0)
+	{
+		this ->a =a;
+		this ->b =b;
+	}
+	void prt()
+	{
+		cout<<"a="<<a<<" b="<<b<<endl;
+	}
+/*
+Stu operator+ (Stu &b)
+{
+	Stu c(this ->a+b.a,this ->b+b.b);
+	return c;
+}
+*/
+
+public:
+private:
+	int a;
+	int b;
+
+
+};
+Stu operator+ (Stu &a,Stu &b)
+{
+	Stu c(a.a+b.a,a.b+b.b);
+	return c;
+}
+
+
+int main(int argc, char *argv[])
+{
+	Stu a(1,2),b(3,4);
+//	Stu c=add (a,b);
+	Stu c =a+b;
+//	Stu c=a.operator+ (b);
+	c.prt();
+	return 0;
+}
+
